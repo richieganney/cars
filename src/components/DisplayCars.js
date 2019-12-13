@@ -13,15 +13,6 @@ class DisplayCars extends Component {
         e.preventDefault();
         let url = `http://localhost:3000`
         axios.delete(`${url}/cars/${this.props.car._id}`)
-        //   .then(response => {
-        //     console.log("success")
-        //     console.log(this.state.car._id)
-        //   })
-        //   .catch(error => {
-        //     console.log("error here")
-        //     console.log(error.response);
-        //     console.log(this.props.car._id)
-        //   });
     }
 
     viewCar(e){

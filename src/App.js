@@ -6,9 +6,10 @@ import SearchCar from './components/SearchCar'
 function App() {
   return (
     <div>
-        <SearchCar />
+        <center><SearchCar />
         <AddCar />
         <Cars/>
+        </center>
     </div>
   );
 }

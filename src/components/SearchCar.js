@@ -13,6 +13,7 @@ class SearchCar extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
         this.organiseData = this.organiseData.bind(this);
+        console.log(this.state.query)
     }
 
     onSubmit(e) {
@@ -24,15 +25,17 @@ class SearchCar extends Component {
           .then(response => {
             this.organiseData(response, query)
             console.log("success")
+            console.log(query)
             console.log(result)
           })
+          .then(this.setState({query: ''}))
           .catch(error => {
             console.log(error.response);
           });
     }
 
     organiseData(res, query){
-        res.data.forEach(element => element.make.includes(query) ? this.setState({result: element}) : null)
+        return res.data.forEach(element => element.make.toLowerCase().includes(query) ? this.setState({result: element}) : null)
     }
 
     onChange(e){
@@ -40,9 +43,10 @@ class SearchCar extends Component {
       }
 
     render(){
+        const { make, model, color, year } = this.state.result;
         return (
             <div>
-                <h1>Search Car</h1>
+                <h1>Search Car by Make</h1>
                 <form onSubmit={e => {this.onSubmit(e)}}>
                 <label>
                     <input type="text" value={this.state.query} onChange={this.onChange} />
@@ -50,6 +54,7 @@ class SearchCar extends Component {
 
                     <input type="submit" value="Submit"/>
                 </form>
+                <p>{make} {model}, {color}, {year}</p>
             </div>
         );
     }

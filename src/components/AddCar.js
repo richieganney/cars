@@ -27,6 +27,7 @@ class Cars extends Component {
           .then(response => {
             console.log("success")
           })
+          .then(this.setState({make: '', model: '', color: '', year: ''}))
           .catch(error => {
             console.log(error.response);
           });

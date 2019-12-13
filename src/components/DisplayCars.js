@@ -11,8 +11,13 @@ class DisplayCars extends Component {
     removeCar(e) {
         e.preventDefault();
         let url = `http://localhost:3000`
-        axios
-          .delete(`${url}/${this.props.car._id}`)
+        axios.delete(url, { data: {
+                            make: this.props.car.make,
+                            model: this.props.car.modle,
+                            color: this.props.car.color,
+                            year: this.props.car.year
+                            }
+                             })
         //   .then(response => {
         //     console.log("success")
         //     console.log(this.state.car._id)

@@ -6,18 +6,13 @@ class DisplayCars extends Component {
     constructor(props) {
         super(props);
         this.removeCar = this.removeCar.bind(this);
+        this.viewCar = this.viewCar.bind(this);
     }
 
     removeCar(e) {
         e.preventDefault();
         let url = `http://localhost:3000`
-        axios.delete(url, { data: {
-                            make: this.props.car.make,
-                            model: this.props.car.modle,
-                            color: this.props.car.color,
-                            year: this.props.car.year
-                            }
-                             })
+        axios.delete(`${url}/cars/${this.props.car._id}`)
         //   .then(response => {
         //     console.log("success")
         //     console.log(this.state.car._id)
@@ -27,6 +22,19 @@ class DisplayCars extends Component {
         //     console.log(error.response);
         //     console.log(this.props.car._id)
         //   });
+    }
+
+    viewCar(e){
+        e.preventDefault();
+        let url = `http://localhost:3000`
+        axios.get(`${url}/cars/${this.props.car._id}`)
+        .then(response => {
+            console.log("success")
+          })
+          .catch(error => {
+            console.log("error here")
+            console.log(error.response);
+          });
     }
 
     render(){

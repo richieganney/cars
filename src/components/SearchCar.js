@@ -25,8 +25,6 @@ class SearchCar extends Component {
           .then(response => {
             this.organiseData(response, query)
             console.log("success")
-            console.log(query)
-            console.log(result)
           })
           .then(this.setState({query: ''}))
           .catch(error => {
@@ -54,7 +52,7 @@ class SearchCar extends Component {
 
                     <input type="submit" value="Submit"/>
                 </form>
-                <p>{make} {model}, {color}, {year}</p>
+                <p>{make} {model} {color} {year}</p>
             </div>
         );
     }
